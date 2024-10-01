@@ -180,6 +180,6 @@ function ccDockerBuildManagementTools(){
 }
 
 function ccDockerBuildManagementToolsAndRun(){
-  ccDockerBuildManagementTools
-	runContainer "management-tools"
+	ccDockerBuildManagementTools
+  runContainer "management-tools"
 }
