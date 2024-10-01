@@ -49,49 +49,49 @@ alias ccCleanStudio='cd $CM_HOME/apps/studio-client/ && pnpm -r clean && pnpm in
 
 
 function ccBuildAll(){
-	cc_info;
-	cd $CM_HOME && mvn clean install -DskipTests=$SKIP_TESTS
+  cc_info;
+  cd $CM_HOME && mvn clean install -DskipTests=$SKIP_TESTS
 }
 
 function ccBuildAllWithImages(){
-	cc_info;
-	cd $CM_HOME && mvn clean install -DskipTests=$SKIP_TESTS -Pdefault-image
+  cc_info;
+  cd $CM_HOME && mvn clean install -DskipTests=$SKIP_TESTS -Pdefault-image
 }
 
 function ccBuildStudioClient(){
-    cc_info;
-    cd $CM_HOME/apps/studio-client/ && pnpm -r run build
+  cc_info;
+  cd $CM_HOME/apps/studio-client/ && pnpm -r run build
 }
 
 function ccDockerBuildStudioClient(){
-	ccBuildStudioClient && pnpm -r run package && docker buildx build . --tag coremedia/studio-client:latest	
+  ccBuildStudioClient && pnpm -r run package && docker buildx build . --tag coremedia/studio-client:latest	
 }
 
 function ccDockerBuildAndRunAll(){
-	cc_info;	
-	cd $CM_HOME && mvn clean install -DskipTests=$SKIP_TESTS -Pdefault-image && ccDockerBuildStudioClient && cd $CM_HOME && cd global/deployment/docker && docker compose up -d --force-recreate
+  cc_info;	
+  cd $CM_HOME && mvn clean install -DskipTests=$SKIP_TESTS -Pdefault-image && ccDockerBuildStudioClient && cd $CM_HOME && cd global/deployment/docker && docker compose up -d --force-recreate
 }
 
 function ccBuildStudioClientAndRunLocal(){
-	cc_info;
-	ccBuildStudioClient && cd global/studio && pnpm run start --proxyTargetUri=http://studio.docker.localhost
+  cc_info;
+  ccBuildStudioClient && cd global/studio && pnpm run start --proxyTargetUri=http://studio.docker.localhost
 }
 
 function ccDockerBuildStudioClientAndRun(){
-	ccDockerBuildStudioClient && cd $CM_HOME/global/deployment/docker && docker compose up -d studio-client
+  ccDockerBuildStudioClient && cd $CM_HOME/global/deployment/docker && docker compose up -d studio-client
 }
 
 function ccDockerRunAll(){
-	cc_info;
-	cd $CM_HOME/global/deployment/docker && docker compose up --force-recreate -d
+  cc_info;
+  cd $CM_HOME/global/deployment/docker && docker compose up --force-recreate -d
 }
 
 function buildModule(){
-	cd $CM_HOME && mvn clean install -T 1.5C -DskipTests=$SKIP_TESTS -pl :$1 -am -P default-image
+  cd $CM_HOME && mvn clean install -T 1.5C -DskipTests=$SKIP_TESTS -pl :$1 -am -P default-image
 }
 
 functio runContainer(){
-	cd $CM_HOME/global/deployment/docker && docker compose up -d $1 --force-recreate
+  cd $CM_HOME/global/deployment/docker && docker compose up -d $1 --force-recreate
 }
 
 function ccDockerBuildCaePreview(){
@@ -180,6 +180,6 @@ function ccDockerBuildManagementTools(){
 }
 
 function ccDockerBuildManagementToolsAndRun(){
-	ccDockerBuildManagementTools
+  ccDockerBuildManagementTools
   runContainer "management-tools"
 }
