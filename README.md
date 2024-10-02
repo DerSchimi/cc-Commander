@@ -5,6 +5,9 @@ Features:
 
 Build modules & run containers with a short command, eg. ccDockerBuildManagementToolsAndRun	
 
+Usage:
+ccD<tab>B<tab>M<tab>A<tab>
+
 Toggle skipTests with a simple command: skipTests
 
 ## Here is a detailed description of each function and alias:
