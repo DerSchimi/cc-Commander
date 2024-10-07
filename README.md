@@ -5,8 +5,8 @@ Features:
 
 Build modules & run containers with a short command, eg. ccDockerBuildManagementToolsAndRun	
 
-Usage:
-ccD"<tab>"B"<tab>"M"<tab>"A"<tab>"
+Use tab completion to quickly start builds:
+ccD[tab]B[tab]M[tab]A[tab]
 
 Toggle skipTests with a simple command: skipTests
 
