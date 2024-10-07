@@ -1,5 +1,5 @@
 ################################################
-# cc Commander v0.1
+# cc Commander v0.2
 # Features: 
 # - Build modules & run containers with a short command, eg. ccDockerBuildManagementToolsAndRun	
 # - Toggle skipTests with a simple command: skipTests
@@ -47,15 +47,18 @@ alias ccOStudioLocal='open http://localhost:3000'
 alias ccOTraefik='open https://monitor.docker.localhost/dashboard/#/'
 alias ccCleanStudio='cd $CM_HOME/apps/studio-client/ && pnpm -r clean && pnpm install'
 
+function mvnBase(){
+	echo "mvn clean install -T1.5C -DskipTests=$SKIP_TESTS"
+}
 
 function ccBuildAll(){
   cc_info;
-  cd $CM_HOME && mvn clean install -DskipTests=$SKIP_TESTS
+  cd $CM_HOME && $(mvnBase)
 }
 
 function ccBuildAllWithImages(){
   cc_info;
-  cd $CM_HOME && mvn clean install -DskipTests=$SKIP_TESTS -Pdefault-image
+  cd $CM_HOME && $(mvnBase) -Pdefault-image
 }
 
 function ccBuildStudioClient(){
@@ -69,7 +72,7 @@ function ccDockerBuildStudioClient(){
 
 function ccDockerBuildAndRunAll(){
   cc_info;	
-  cd $CM_HOME && mvn clean install -DskipTests=$SKIP_TESTS -Pdefault-image && ccDockerBuildStudioClient && cd $CM_HOME && cd global/deployment/docker && docker compose up -d --force-recreate
+  cd $CM_HOME && $(mvnBase) -Pdefault-image && ccDockerBuildStudioClient && cd $CM_HOME && cd global/deployment/docker && docker compose up -d --force-recreate
 }
 
 function ccBuildStudioClientAndRunLocal(){
@@ -87,7 +90,7 @@ function ccDockerRunAll(){
 }
 
 function buildModule(){
-  cd $CM_HOME && mvn clean install -T 1.5C -DskipTests=$SKIP_TESTS -pl :$1 -am -P default-image
+   cd $CM_HOME && $(mvnBase) -pl :$1 -am -P default-image
 }
 
 functio runContainer(){
@@ -182,4 +185,9 @@ function ccDockerBuildManagementTools(){
 function ccDockerBuildManagementToolsAndRun(){
   ccDockerBuildManagementTools
   runContainer "management-tools"
+}
+
+function ccDockerClean(){
+  cc_info;
+  cd $CM_HOME/global/deployment/docker && docker compose down -v
 }

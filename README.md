@@ -25,6 +25,7 @@ cc_info(): Displays information about the current configuration and versions of 
 
 skipTests(): Toggles the SKIP_TESTS variable between true and false and displays the current status.
 
+mvnBase(): Executes a Maven command with the current configuration. You can modify your desired build here.
 
 ## Aliases
 ccHome: Displays the current CM_HOME directory.
@@ -63,6 +64,8 @@ buildModule(): Builds a specific module and its dependencies.
 
 runContainer(): Starts a specific Docker container.
 
+ccDockerClean(): Removes all Docker containers and volumes.
+
 
 ## Specific Build and Run Functions
 ccDockerBuildCaePreview(): Builds the cae-preview-app module.
@@ -100,3 +103,10 @@ ccDockerBuildCaeFeederPreviewAndRun(): Builds and starts the cae-feeder-preview 
 ccDockerBuildManagementTools(): Builds the management-tools.blueprint-container-image module.
 
 ccDockerBuildManagementToolsAndRun(): Builds and starts the management-tools module.
+
+
+## Changelog
+
+v.0.1 - Initial release
+
+v.0.2 - The mvnBase function has been added to enhance the build parameterization capabilities, and parallel building has been implemented as the default setting for all build steps to improve efficiency.
