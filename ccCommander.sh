@@ -26,8 +26,8 @@ export SKIP_INFO=false
 
 function cc_info(){
 	if [ "$SKIP_INFO" != "true" ]; 
-		then echo "cc-Commander v0.1\nhttps://github.com/DerSchimi/cc-Commander\nUsing cm-home:$CM_HOME\nskipTests:$SKIP_TESTS\nJava:`java --version`\npnpm:`pnpm -v`\nMaven:\n`mvn -v`"
-	else echo "cc-Commander v0.1";
+		then echo "cc-Commander v0.2\nhttps://github.com/DerSchimi/cc-Commander\nUsing cm-home:$CM_HOME\nskipTests:$SKIP_TESTS\nJava:`java --version`\npnpm:`pnpm -v`\nMaven:\n`mvn -v`"
+	else echo "cc-Commander v0.2";
 	
 	fi;
 }
