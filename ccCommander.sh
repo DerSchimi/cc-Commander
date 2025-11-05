@@ -1,5 +1,5 @@
 ################################################
-# cc Commander v0.2
+# cc Commander v0.3
 # Features: 
 # - Build modules & run containers with a short command, eg. ccDockerBuildManagementToolsAndRun	
 # - Toggle skipTests with a simple command: skipTests
