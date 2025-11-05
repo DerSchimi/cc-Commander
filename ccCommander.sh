@@ -191,3 +191,18 @@ function ccDockerClean(){
   cc_info;
   cd $CM_HOME/global/deployment/docker && docker compose down -v
 }
+
+function ccDockerBuildWorkflowServer(){
+  cc_info;
+  buildModule "workflow-server-app"
+}
+
+function ccDockerBuildWorkflowServerAndRun(){
+  ccDockerBuildWorkflowServer
+  runContainer "workflow-server"
+}
+
+function ccDockerPrune(){
+  cc_info;
+  cd $CM_HOME/global/deployment/docker && docker system prune -a
+}
