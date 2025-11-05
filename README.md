@@ -104,9 +104,17 @@ ccDockerBuildManagementTools(): Builds the management-tools.blueprint-container-
 
 ccDockerBuildManagementToolsAndRun(): Builds and starts the management-tools module.
 
+ccDockerBuildWorkflowServer(): Build the workflow server module.
+
+ccDockerBuildWorkflowServerAndRun(): Builds and starts the workflow app.
+
+ccDockerPrune(): Calls system prune -a to remove unsed images etc.
+
 
 ## Changelog
 
 v.0.1 - Initial release
 
 v.0.2 - The mvnBase function has been added to enhance the build parameterization capabilities, and parallel building has been implemented as the default setting for all build steps to improve efficiency.
+
+v.0.3 - Added ccDockerBuildWorkflowServer, ccDockerBuildWorkflowServerAndRun and ccDockerPrune
